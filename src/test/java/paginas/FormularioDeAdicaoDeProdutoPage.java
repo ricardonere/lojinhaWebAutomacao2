@@ -24,4 +24,9 @@ public class FormularioDeAdicaoDeProdutoPage {
             navegador.findElement(By.cssSelector("button[type= \"submit\"]")).click();
             return new ListaDeProdutosPage(navegador);
         }
+        public FormularioDeEdicaoDeProdutoPage submeterFormularioDeAdicaoComSucesso(){
+            navegador.findElement(By.cssSelector("button[type= \"submit\"]")).click();
+            return new FormularioDeEdicaoDeProdutoPage(navegador);
+
+        }
 }
