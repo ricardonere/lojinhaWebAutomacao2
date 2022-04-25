@@ -71,7 +71,7 @@ String mensagemApresentada = new LoginPage(navegador)
         .submeterFormularioDeLogin()
         .acessarFormularioAdicaoNovoProduto()
         .informarNomeDoProduto("IPHONE13")
-        .informarValorDoProduto("69990")
+        .informarValorDoProduto("30000")
         .informarCoresDoProduto("azul, vermelho")
         .submeterFormularioDeAdicaoComSucesso()
                 .capturarMensagemApresentada();
@@ -79,10 +79,24 @@ String mensagemApresentada = new LoginPage(navegador)
 Assertions.assertEquals("Produto adicionado com sucesso", mensagemApresentada);
 //Produto adicionado com sucesso
 }
-
+@Test
+@DisplayName("Posso adicionar produtos que estejam no limite de R$7.000,00")
+public void possoAdicionarProdutosComValorDeSeteMilReais(){
+        String mensagemApresentada = new LoginPage(navegador)
+                .informarOUsuario("admin")
+                .informarASenha("admin")
+                .submeterFormularioDeLogin()
+                .acessarFormularioAdicaoNovoProduto()
+                .informarNomeDoProduto("Macbook Pro")
+                .informarValorDoProduto("700000")
+                .informarCoresDoProduto("preto, azul")
+                .submeterFormularioDeAdicaoComSucesso()
+                .capturarMensagemApresentada();
+        Assertions.assertEquals("Produto adicionado com sucesso", mensagemApresentada);
+}
 @AfterEach
     public void afterEach(){
     //Vou fechar o navegador
-    navegador.quit();
+    //navegador.quit();
 }
 }
